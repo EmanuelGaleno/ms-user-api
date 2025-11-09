@@ -1,7 +1,9 @@
 package io.emanuel.ms_user_api.common.exceptions;
 
+import lombok.Getter;
 import java.util.List;
 
+@Getter
 public class DomainException extends RuntimeException {
 
     private final List<String> errors;
@@ -14,9 +16,5 @@ public class DomainException extends RuntimeException {
     public DomainException(String message, List<String> errors) {
         super(message);
         this.errors = errors;
-    }
-
-    public List<String> getErrors() {
-        return errors;
     }
 }
