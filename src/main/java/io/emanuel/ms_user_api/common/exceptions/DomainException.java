@@ -1,20 +1,25 @@
 package io.emanuel.ms_user_api.common.exceptions;
 
 import lombok.Getter;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class DomainException extends RuntimeException {
+@ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
+public class DomainException extends BaseException {
 
-    private final List<String> errors;
+    private final List<String> details;
 
     public DomainException(String message) {
         super(message);
-        this.errors = List.of(message);
+        this.details = new ArrayList<>();
     }
 
-    public DomainException(String message, List<String> errors) {
+    public DomainException(String message, List<String> details) {
         super(message);
-        this.errors = errors;
+        this.details = new ArrayList<>(details);
     }
 }

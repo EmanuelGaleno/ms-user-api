@@ -15,7 +15,7 @@ public class UserValidator extends AbstractValidator<User> {
                 .must(not(stringEmptyOrNull()))
                 .withMessage("O nome é obrigatório.");
 
-        ruleFor(user -> user.getEmail() != null ? user.getEmail().email() : null)
+        ruleFor(user -> user.getEmail() != null ? user.getEmail().value() : null)
                 .must(not(stringEmptyOrNull()))
                 .withMessage("O e-mail é obrigatório.");
 
